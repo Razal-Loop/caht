@@ -1,55 +1,43 @@
 # AnonChat - Anonymous Chat Application
 
-A real-time anonymous chat application similar to WhatsApp, where users can connect as guests and chat with strangers around the world.
+A modern, real-time anonymous chat application built with React, Node.js, and Socket.IO. Connect with strangers around the world through smart gender and interest-based matching.
 
-## Features
+![AnonChat Preview](https://img.shields.io/badge/Status-Live-brightgreen)
+![React](https://img.shields.io/badge/React-18.2.0-blue)
+![Node.js](https://img.shields.io/badge/Node.js-16+-green)
+![Socket.IO](https://img.shields.io/badge/Socket.IO-4.7.0-orange)
 
-- 🔒 **100% Anonymous** - No registration required, just choose a username and avatar
-- ⚡ **Real-time Messaging** - Powered by Socket.io for instant message delivery
-- 🎯 **Instant Matching** - Automatically connects you with other users looking to chat
-- 📱 **Responsive Design** - Works perfectly on desktop and mobile devices
-- 🎨 **Modern UI** - Beautiful, intuitive interface with smooth animations
-- 💬 **Typing Indicators** - See when your chat partner is typing
-- 🔄 **New Chat** - Easily find new chat partners anytime
-- 📹 **Video Calls** - High-quality video calling with WebRTC
-- 🎤 **Voice Calls** - Crystal clear voice calling
-- 📷 **Media Sharing** - Share images, videos, and audio files
-- 🎛️ **Call Controls** - Mute/unmute, video on/off, and more
+## 🌟 Features
 
-## Tech Stack
+### Core Features
+- **100% Anonymous Chat** - No registration required, just choose a username
+- **Smart Matching Algorithm** - Connect based on gender preferences and shared interests
+- **Real-time Messaging** - Instant message delivery with Socket.IO
+- **Video & Audio Calls** - WebRTC-powered video and voice calling
+- **Media Sharing** - Share images, videos, and audio files
+- **Responsive Design** - Works perfectly on desktop, tablet, and mobile devices
 
-### Backend
-- **Node.js** - Runtime environment
-- **Express.js** - Web framework
-- **Socket.io** - Real-time communication
-- **MongoDB** - Database for storing messages and user sessions
-- **Mongoose** - MongoDB object modeling
-- **Multer** - File upload handling
-- **WebRTC Signaling** - Real-time call management
+### Advanced Features
+- **Gender-based Matching** - Specify who you want to chat with
+- **Interest Matching** - Connect with people who share your hobbies
+- **Skip Functionality** - Find a new chat partner anytime
+- **Typing Indicators** - See when someone is typing
+- **WhatsApp-like UI** - Modern, intuitive interface
+- **Bootstrap Integration** - Professional, responsive design
 
-### Frontend
-- **React** - UI library
-- **Socket.io Client** - Real-time communication
-- **React Router** - Client-side routing
-- **Lucide React** - Beautiful icons
-- **CSS3** - Styling with modern features
-- **WebRTC** - Video and voice calling
-- **React Dropzone** - File upload interface
+## 🚀 Quick Start
 
-## Prerequisites
+### Prerequisites
+- Node.js (v16 or higher)
+- npm or yarn
+- Modern web browser
 
-Before running this application, make sure you have the following installed:
-
-- **Node.js** (v14 or higher)
-- **MongoDB** (v4.4 or higher)
-- **npm** or **yarn**
-
-## Installation & Setup
+### Installation
 
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
-   cd anon-chat-app
+   git clone https://github.com/yourusername/anonchat.git
+   cd anonchat
    ```
 
 2. **Install dependencies**
@@ -57,206 +45,289 @@ Before running this application, make sure you have the following installed:
    npm run install-all
    ```
 
-3. **Set up MongoDB**
-   - Make sure MongoDB is running on your system
-   - The app will connect to `mongodb://localhost:27017/anonchat` by default
-   - You can change this in the server's environment variables
-
-4. **Environment Variables (Optional)**
-   Create a `.env` file in the `server` directory:
-   ```env
-   PORT=5000
-   MONGODB_URI=mongodb://localhost:27017/anonchat
-   NODE_ENV=development
+3. **Start the application**
+   ```bash
+   npm run dev
    ```
 
-## Running the Application
+4. **Open your browser**
+   - Frontend: http://localhost:3000
+   - Backend: http://localhost:5000
 
-### Development Mode
-```bash
-npm run dev
-```
-This will start both the backend server (port 5000) and frontend development server (port 3000).
-
-### Production Mode
-```bash
-# Build the frontend
-npm run build
-
-# Start the backend server
-npm run server
-```
-
-## Usage
-
-1. **Open your browser** and go to `http://localhost:3000`
-2. **Enter a username** or use the random generator
-3. **Choose an avatar** or generate a random one
-4. **Click "Start Chatting"** to begin
-5. **Wait for a match** - the app will automatically connect you with another user
-6. **Start chatting** - send messages in real-time
-7. **Make calls** - click the video or voice call buttons to start a call
-8. **Share media** - click the paperclip icon to share images, videos, or audio
-9. **Find new chat partners** anytime using the "New Chat" button
-
-## Project Structure
+## 📁 Project Structure
 
 ```
-anon-chat-app/
+anonchat/
 ├── client/                 # React frontend
-│   ├── public/            # Static files
+│   ├── public/            # Static assets
 │   ├── src/
 │   │   ├── components/    # React components
-│   │   │   ├── Welcome.js # Landing page
-│   │   │   └── Chat.js    # Chat interface
-│   │   ├── App.js         # Main app component
-│   │   └── index.js       # Entry point
-│   └── package.json
+│   │   │   ├── Welcome.js # Welcome/registration screen
+│   │   │   ├── Chat.js    # Main chat interface
+│   │   │   ├── CallModal.js # Video/audio call modal
+│   │   │   └── MediaShare.js # Media sharing modal
+│   │   ├── utils/         # Utility functions
+│   │   │   ├── webrtc.js  # WebRTC management
+│   │   │   └── fileUpload.js # File upload handling
+│   │   ├── App.js         # Main React component
+│   │   └── App.css        # Global styles
+│   └── package.json       # Frontend dependencies
 ├── server/                # Node.js backend
-│   ├── models/           # MongoDB models
-│   │   ├── User.js
-│   │   ├── Message.js
-│   │   └── ChatRoom.js
-│   ├── index.js          # Server entry point
-│   └── package.json
-└── package.json          # Root package.json
+│   ├── models/           # Data models
+│   ├── uploads/          # File uploads directory
+│   ├── index.js          # Main server file
+│   └── package.json      # Backend dependencies
+├── start.bat             # Windows startup script
+├── start.sh              # Linux/Mac startup script
+└── README.md             # This file
 ```
 
-## API Endpoints
+## 🛠️ Technology Stack
 
-### WebSocket Events
+### Frontend
+- **React 18.2.0** - Modern UI library
+- **Socket.IO Client** - Real-time communication
+- **Bootstrap 5.3.8** - Responsive CSS framework
+- **Lucide React** - Beautiful icons
+- **WebRTC** - Video/audio calling
+
+### Backend
+- **Node.js** - JavaScript runtime
+- **Express.js** - Web framework
+- **Socket.IO** - Real-time bidirectional communication
+- **Multer** - File upload handling
+- **MongoDB** (Optional) - Database (currently using in-memory storage)
+
+## 🎯 Usage Guide
+
+### Getting Started
+1. **Enter Username** - Choose any username you like
+2. **Select Avatar** - Use a random avatar or provide your own URL
+3. **Choose Gender** - Select your gender (Male/Female/Other)
+4. **Set Preferences** - Choose who you want to chat with
+5. **Select Interests** - Pick your hobbies and interests
+6. **Start Chatting** - Click "Start Chatting" to find a partner
+
+### Chat Features
+- **Send Messages** - Type and press Enter or click Send
+- **Share Media** - Click the paperclip icon to share files
+- **Video Call** - Click the video camera icon
+- **Voice Call** - Click the microphone icon
+- **Skip Partner** - Click the refresh icon to find someone new
+- **Disconnect** - Click the phone icon to leave
+
+### Matching Algorithm
+The app uses a sophisticated matching system:
+1. **Gender Compatibility** - Matches based on your preferences
+2. **Interest Scoring** - Prioritizes users with shared interests
+3. **Test Mode** - Includes bot users for testing when no real users are available
+
+## 🔧 API Documentation
+
+### Socket.IO Events
 
 #### Client to Server
-- `join-as-guest` - Join as anonymous user
-- `find-new-chat` - Find a new chat partner
-- `send-message` - Send a message
-- `typing` - Send typing indicator
-- `call-offer` - Initiate a video/voice call
-- `call-answer` - Answer an incoming call
-- `ice-candidate` - WebRTC ICE candidate exchange
-- `call-end` - End an active call
-- `call-reject` - Reject an incoming call
-- `share-media` - Share media files
+- `join-as-guest` - Join the chat as a guest user
+- `send-message` - Send a text message
+- `typing` - Indicate typing status
+- `find-new-chat` - Skip current partner and find new one
+- `call-offer` - Initiate video/audio call
+- `call-answer` - Answer incoming call
+- `call-end` - End current call
+- `call-reject` - Reject incoming call
 
 #### Server to Client
-- `user-joined` - User successfully joined
-- `matched` - Found a chat partner
-- `waiting-for-match` - Waiting for a partner
-- `new-message` - New message received
-- `new-media-message` - New media message received
+- `matched` - User matched with a chat partner
+- `message` - Receive a new message
 - `user-typing` - Partner is typing
-- `partner-disconnected` - Partner left the chat
+- `user-stopped-typing` - Partner stopped typing
 - `call-offer` - Incoming call offer
 - `call-answer` - Call answer received
-- `ice-candidate` - WebRTC ICE candidate
 - `call-end` - Call ended
 - `call-reject` - Call rejected
 
-## Database Schema
+### HTTP Endpoints
+- `GET /api/test` - Server health check
+- `POST /api/upload` - File upload endpoint
 
-### User
-```javascript
-{
-  userId: String (unique),
-  username: String,
-  avatar: String,
-  socketId: String,
-  isOnline: Boolean,
-  joinedAt: Date,
-  disconnectedAt: Date
-}
+## 🎨 Customization
+
+### Styling
+The app uses a WhatsApp-inspired design with:
+- **Color Scheme**: Green gradient background (#25D366 to #075E54)
+- **Typography**: System fonts for optimal readability
+- **Responsive Design**: Mobile-first approach with Bootstrap
+- **Dark Mode**: Ready for future dark theme implementation
+
+### Configuration
+Key configuration options in `server/index.js`:
+- **Port**: Default 5000 (change `PORT` environment variable)
+- **CORS**: Configured for localhost:3000
+- **File Upload**: 10MB limit, supports images, audio, video
+- **Matching**: Customizable interest scoring algorithm
+
+## 🚀 Deployment
+
+### Local Development
+```bash
+npm run dev          # Start both client and server
+npm run server       # Start server only
+npm run client       # Start client only
 ```
 
-### Message
-```javascript
-{
-  roomId: String,
-  userId: String,
-  username: String,
-  avatar: String,
-  message: String,
-  mediaUrl: String, // Optional
-  mediaType: String, // 'image', 'audio', 'video'
-  fileName: String, // Optional
-  timestamp: Date
-}
+### Production Deployment
+
+1. **Build the client**
+   ```bash
+   cd client
+   npm run build
+   ```
+
+2. **Set environment variables**
+   ```bash
+   export PORT=5000
+   export NODE_ENV=production
+   ```
+
+3. **Start the server**
+   ```bash
+   cd server
+   npm start
+   ```
+
+### Docker Deployment
+```dockerfile
+# Dockerfile example
+FROM node:16-alpine
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+EXPOSE 5000
+CMD ["npm", "start"]
 ```
 
-### ChatRoom
+## 🧪 Testing
+
+### Manual Testing
+1. **Open multiple browser tabs** to test matching
+2. **Use different browsers** to simulate multiple users
+3. **Test media sharing** with various file types
+4. **Test video/audio calls** between different devices
+
+### Test Mode
+The app includes a test mode with bot users:
+- **TestBot** - Predefined bot user for testing
+- **Quick Test Setup** - Button to auto-fill form fields
+- **Server Health Check** - Test server connectivity
+
+## 🔒 Security Features
+
+- **Anonymous by Design** - No personal data collection
+- **File Upload Validation** - Type and size restrictions
+- **CORS Protection** - Configured for specific origins
+- **Input Sanitization** - XSS protection
+- **Rate Limiting** - Prevents spam (can be added)
+
+## 🐛 Troubleshooting
+
+### Common Issues
+
+1. **Connection Failed**
+   - Check if server is running on port 5000
+   - Verify firewall settings
+   - Check browser console for errors
+
+2. **Video/Audio Not Working**
+   - Ensure camera/microphone permissions are granted
+   - Check if devices are being used by other applications
+   - Try refreshing the page
+
+3. **File Upload Issues**
+   - Check file size (max 10MB)
+   - Verify file type is supported
+   - Ensure uploads directory exists
+
+4. **Styling Issues**
+   - Clear browser cache
+   - Check if Bootstrap CSS is loading
+   - Verify CSS file paths
+
+### Debug Mode
+Enable debug logging by adding to browser console:
 ```javascript
-{
-  roomId: String (unique),
-  participants: [String],
-  createdAt: Date,
-  lastMessageAt: Date,
-  isActive: Boolean
-}
+localStorage.setItem('debug', 'socket.io-client:*');
 ```
 
-## Features in Detail
+## 🤝 Contributing
 
-### Anonymous Authentication
-- Users can join without any registration
-- Each user gets a unique session ID
-- Usernames and avatars are customizable
-- No personal information is stored
+We welcome contributions! Here's how to get started:
 
-### Real-time Matching
-- Automatic pairing of users looking to chat
-- Queue system for waiting users
-- Instant connection when a match is found
+1. **Fork the repository**
+2. **Create a feature branch**
+   ```bash
+   git checkout -b feature/amazing-feature
+   ```
+3. **Commit your changes**
+   ```bash
+   git commit -m 'Add amazing feature'
+   ```
+4. **Push to the branch**
+   ```bash
+   git push origin feature/amazing-feature
+   ```
+5. **Open a Pull Request**
 
-### Chat Features
-- Real-time message delivery
-- Typing indicators
-- Message timestamps
-- Partner disconnection notifications
-- Easy partner switching
-- Media file sharing (images, videos, audio)
-- File upload with progress tracking
-- Media preview and playback
+### Development Guidelines
+- Follow existing code style
+- Add comments for complex logic
+- Test your changes thoroughly
+- Update documentation as needed
 
-### Calling Features
-- High-quality video calls with WebRTC
-- Crystal clear voice calls
-- Call controls (mute, video toggle, end call)
-- Incoming call notifications
-- Call acceptance/rejection
-- Real-time call status updates
+## 📝 License
 
-### User Experience
-- Modern, responsive design
-- Smooth animations and transitions
-- Mobile-friendly interface
-- Connection status indicators
-- Error handling and user feedback
-- Intuitive call interface
-- Drag-and-drop file sharing
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Security Considerations
+## 🙏 Acknowledgments
 
-- All communication is anonymous
-- No personal data is stored
-- Messages are not permanently stored (optional)
-- Rate limiting can be implemented
-- Input validation and sanitization
+- **Socket.IO** - For real-time communication
+- **React** - For the amazing UI library
+- **Bootstrap** - For responsive design
+- **Lucide** - For beautiful icons
+- **WebRTC** - For video/audio calling
 
-## Contributing
+## 📞 Support
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test thoroughly
-5. Submit a pull request
+If you encounter any issues or have questions:
 
-## License
+1. **Check the troubleshooting section** above
+2. **Search existing issues** on GitHub
+3. **Create a new issue** with detailed information
+4. **Join our community** discussions
 
-This project is licensed under the MIT License.
+## 🔮 Roadmap
 
-## Support
+### Upcoming Features
+- [ ] Dark mode theme
+- [ ] Message encryption
+- [ ] Group chat rooms
+- [ ] User profiles
+- [ ] Message history
+- [ ] Push notifications
+- [ ] Mobile app (React Native)
+- [ ] Voice messages
+- [ ] Emoji reactions
+- [ ] Chat themes
 
-If you encounter any issues or have questions, please open an issue on GitHub.
+### Performance Improvements
+- [ ] Database integration (MongoDB/PostgreSQL)
+- [ ] Redis for session management
+- [ ] CDN for static assets
+- [ ] Load balancing
+- [ ] Caching strategies
 
 ---
 
-**Enjoy chatting anonymously! 🎉**
+**Made with ❤️ for anonymous connections worldwide**
+
+*Connect. Chat. Discover.*
