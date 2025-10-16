@@ -329,5 +329,5 @@ If you encounter any issues or have questions:
 ---
 
 **Made with ❤️ for anonymous connections worldwide**
-
+Contact: Official.razalali@gmail.com
 *Connect. Chat. Discover.*
